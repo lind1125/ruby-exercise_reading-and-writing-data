@@ -1,6 +1,3 @@
-require 'csv'
-require 'json'
-require 'net/http'
 
 file_location = "sample.txt"
 
