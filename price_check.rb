@@ -1,12 +1,12 @@
 require 'csv'
 
-file_location = "prices.csv"
+file_location = "prices_2.csv"
 
 content = File.read(file_location)
 
-data = CSV.parse(content)
+data = CSV.parse(content, headers: true)
 
 data.each do |d|
-  puts "DATE: #{d[0]} PRICE: #{d[1]}"
+  puts "DATE: #{d['date']} PRICE: #{d['price']}"
 end
 
