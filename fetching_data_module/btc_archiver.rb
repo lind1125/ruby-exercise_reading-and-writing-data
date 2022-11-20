@@ -20,3 +20,21 @@ def extract_data(content)
 
     return { current_date: current_date, current_price: current_price }
 end
+
+uri = URI(endpoint)
+
+response = Net::HTTP.get_response(uri)
+
+if response.code.to_s == "200"
+  content = response.body
+  result = extract_data(content)
+
+  current_date = result[:current_date]
+  current_price = result[:current_price]
+
+  add_price(archive_file, current_date, current_price)
+else
+  puts "Something went wrong!"
+end
+
+puts "Done!"
